@@ -1,23 +1,11 @@
 const express = require('express');
-const mysql = require('mysql');
-
-
-const db = mysql.createConnection({
-        host: 'us-cdbr-east-03.cleardb.com',
-        user: 'b88d1ffd93f724',
-        password: 'a1bfaf00',
-        database: 'heroku_3ee05a0394887a3'
-    });
-    
-db.connect((err)=>{
-        if(err){
-                throw err;
-            }
-            console.log('MySql Connected....');
-        });
-            
-
 const app = express();
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+
+
 const user = require("./routes/user");
 const subscription = require("./routes/subscription");
 
